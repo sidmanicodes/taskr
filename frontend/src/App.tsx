@@ -1,4 +1,4 @@
-import Display from "./label_screen/display";
+import Display from "./label_screen/Display";
 
 function App() {
   return (

@@ -1,17 +1,16 @@
 import useLabels from "../hooks/useLabels";
+import "./Display.css";
 
 const Display = () => {
   const { labels } = useLabels();
   return (
-    <div>
-      <ul>
-        {labels.map((label, index) => (
-          <li key={index} color={label.color}>
-            {label.name}
-          </li>
-        ))}
-      </ul>
-    </div>
+    <ul className="list-group">
+      {labels.map((label, index) => (
+        <li key={index} className="list-group-item">
+          {label.name + " | " + label.color}
+        </li>
+      ))}
+    </ul>
   );
 };
 
