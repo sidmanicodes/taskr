@@ -1,4 +1,4 @@
-const labelController = require("../controllers/todoController");
+const labelController = require("../controllers/labelController");
 const express = require("express");
 router = express.Router();
 
