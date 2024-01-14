@@ -1,3 +1,4 @@
+import React from "react";
 import Display from "./label_screen/Display";
 
 function App() {
