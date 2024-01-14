@@ -1,3 +1,4 @@
+import React from "react";
 import useLabels from "../hooks/useLabels";
 import "./Display.css";
 
