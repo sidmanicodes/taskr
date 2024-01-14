@@ -1,5 +1,11 @@
+import Display from "./label_screen/display";
+
 function App() {
-  return <div>Hello World</div>;
+  return (
+    <div>
+      <Display />
+    </div>
+  );
 }
 
 export default App;
