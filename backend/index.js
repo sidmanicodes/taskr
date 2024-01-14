@@ -9,22 +9,6 @@ const todoRoutes = require("./routes/todoRoutes");
 // Configure environment
 dotenv.config();
 
-// Get CRUD functions from todo controller
-// const {
-//   getTodos,
-//   createTodo,
-//   updateTodo,
-//   deleteTodo,
-// } = require("./controllers/todoController");
-
-// Get CRUD functions from label controller
-// const {
-//   getLabels,
-//   createLabel,
-//   updateLabel,
-//   deleteLabel,
-// } = require("./controllers/labelController");
-
 // Create Express app
 const app = express();
 
@@ -53,35 +37,3 @@ mongoose
 // Mount routes as middleware
 app.use("/api/todos", todoRoutes);
 app.use("/api/labels", labelRoutes);
-
-// // Label API endpoints
-// const labelsEndpoint = "/labels";
-
-// // Get
-// app.get(labelsEndpoint, getLabels);
-
-// // Create
-// app.post(labelsEndpoint, createLabel);
-
-// // Update
-// app.patch(labelsEndpoint + "/:id", updateLabel);
-
-// // Delete
-// app.delete(labelsEndpoint + "/:id", deleteLabel);
-
-// // -------------------------------
-
-// // Todo API endpoints
-// const todosEndpoint = "/todos";
-
-// // Get
-// app.get(todosEndpoint, getTodos);
-
-// // Create
-// app.post(todosEndpoint, createTodo);
-
-// // Update
-// app.patch(todosEndpoint + "/:id", updateTodo);
-
-// // Delete
-// app.delete(todosEndpoint + "/:id", deleteTodo);
