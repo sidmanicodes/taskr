@@ -1,19 +1,35 @@
 import React from "react";
-import Display from "./left_sidebar/LeftSidebar";
+import LeftSidebar from "./left_sidebar/LeftSidebar";
 import { Grid, GridItem, Show } from "@chakra-ui/react";
+import SidebarHeader from "./left_sidebar/SidebarHeader";
 
 function App() {
   return (
     <div>
-      <Grid templateAreas={{ base: `"main"`, lg: `"aside main"` }}>
+      <Grid
+        templateAreas={{
+          base: `"main" "main"`,
+          lg: `"topl topm"
+          "aside main"
+           "aside main"`,
+        }}
+        templateRows={{
+          lg: "150 1fr",
+        }}
+        templateColumns={{
+          base: "1fr",
+          lg: "250px 1fr",
+        }}
+      >
         <Show above="lg">
-          <GridItem area="aside" bg="red">
-            Aside
+          <GridItem area="topl" paddingX={5} paddingY={5}>
+            <SidebarHeader />
+          </GridItem>
+          <GridItem area="aside" paddingX={5}>
+            <LeftSidebar />
           </GridItem>
         </Show>
-        <GridItem area="main" bg="blue">
-          Main
-        </GridItem>
+        <GridItem area="main">Main</GridItem>
       </Grid>
     </div>
   );
