@@ -19,8 +19,8 @@ import {
   ModalOverlay,
   useDisclosure,
 } from "@chakra-ui/react";
-
 import { useFormik } from "formik";
+import * as Yup from "yup";
 
 interface Props {
   setName: (name: string) => void;
@@ -45,45 +45,67 @@ const CreateLabel = ({ setName, setColor }: Props) => {
       name: "",
       color: "",
     },
+    validationSchema: Yup.object({
+      name: Yup.string()
+        .required("Please enter a label name")
+        .max(
+          15,
+          "Label name too long, please enter one shorter than 15 characters"
+        ),
+      color: Yup.string().required("Please choose a label color"),
+    }),
     onSubmit: (data, actions): void => {
       setName(data.name);
       setColor(data.color);
+      console.log(data);
       actions.resetForm();
-      alert(JSON.stringify(data, null, 2));
       actions.setSubmitting(false);
+      handleClose();
     },
   });
 
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const handleClose = () => {
+    formik.resetForm();
+    onClose();
+  };
 
   return (
     <>
       <Button onClick={onOpen}>Create new label</Button>
 
       <VStack>
-        <Modal isOpen={isOpen} onClose={onClose}>
+        <Modal isOpen={isOpen} onClose={handleClose}>
           <ModalOverlay />
           <ModalContent>
             <form onSubmit={formik.handleSubmit}>
               <ModalHeader>
-                <FormControl>
+                <FormControl
+                  isInvalid={!!formik.errors?.name && formik.touched.name}
+                >
                   <FormLabel>Label name</FormLabel>
                   <Input
                     name="name"
                     onChange={formik.handleChange}
                     value={formik.values.name}
+                    onBlur={formik.handleBlur}
                     placeholder="Enter a label name"
                   />
+                  <FormErrorMessage>{formik.errors.name}</FormErrorMessage>
                 </FormControl>
               </ModalHeader>
               <ModalCloseButton />
               <ModalBody>
-                <FormControl>
+                <FormControl
+                  isInvalid={!!formik.errors?.color && formik.touched.color}
+                >
                   <FormLabel>Color</FormLabel>
                   <Select
                     name="color"
                     onChange={formik.handleChange}
                     value={formik.values.color}
+                    onBlur={formik.handleBlur}
                     placeholder="Select a color"
                   >
                     {validColors.map((color) => (
@@ -92,19 +114,15 @@ const CreateLabel = ({ setName, setColor }: Props) => {
                       </option>
                     ))}
                   </Select>
+                  <FormErrorMessage>{formik.errors.color}</FormErrorMessage>
                 </FormControl>
               </ModalBody>
 
               <ModalFooter>
-                <Button
-                  type="submit"
-                  onClick={onClose}
-                  colorScheme="purple"
-                  mr={3}
-                >
+                <Button type="submit" colorScheme="purple" mr={3}>
                   Create label
                 </Button>
-                <Button onClick={onClose}>Cancel</Button>
+                <Button onClick={handleClose}>Cancel</Button>
               </ModalFooter>
             </form>
           </ModalContent>
