@@ -22,10 +22,10 @@ function App() {
         }}
       >
         <Show above="lg">
-          <GridItem area="topl" paddingX={5} paddingY={5}>
+          <GridItem area="topl" paddingX={4} paddingY={5}>
             <SidebarHeader />
           </GridItem>
-          <GridItem area="aside" paddingX={5}>
+          <GridItem area="aside" paddingX={3}>
             <LeftSidebar />
           </GridItem>
         </Show>

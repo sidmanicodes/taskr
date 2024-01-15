@@ -1,13 +1,12 @@
-import {
-  FormControl,
-  FormLabel,
-  FormErrorMessage,
-  VStack,
-  Input,
-  Select,
-} from "@chakra-ui/react";
+import { EditIcon, PlusSquareIcon } from "@chakra-ui/icons";
 import {
   Button,
+  Container,
+  FormControl,
+  FormErrorMessage,
+  FormLabel,
+  IconButton,
+  Input,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -15,22 +14,25 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  Select,
+  VStack,
   useDisclosure,
 } from "@chakra-ui/react";
+import { Label } from "../services/label-service";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { PlusSquareIcon } from "@chakra-ui/icons";
 import validColors from "../services/valid-colors";
 
 interface Props {
-  onCreateLabel: (name: string, color: string) => void;
+  onEditLabel: (name: string, color: string, _id: string) => void;
+  currentLabel: Label;
 }
 
-const CreateLabel = ({ onCreateLabel }: Props) => {
+const EditLabel = ({ onEditLabel, currentLabel }: Props) => {
   const formik = useFormik({
     initialValues: {
-      name: "",
-      color: "",
+      name: currentLabel.name,
+      color: currentLabel.color,
     },
     validationSchema: Yup.object({
       name: Yup.string()
@@ -42,7 +44,7 @@ const CreateLabel = ({ onCreateLabel }: Props) => {
       color: Yup.string().required("Please choose a label color"),
     }),
     onSubmit: (data, actions): void => {
-      onCreateLabel(data.name, data.color);
+      onEditLabel(data.name, data.color, currentLabel._id);
       console.log(data);
       actions.resetForm();
       actions.setSubmitting(false);
@@ -56,14 +58,14 @@ const CreateLabel = ({ onCreateLabel }: Props) => {
     formik.resetForm();
     onClose();
   };
-
   return (
-    <>
-      <Button onClick={onOpen} variant={"ghost"}>
-        <PlusSquareIcon mr={1} />
-        Create new label
-      </Button>
-
+    <Container>
+      <IconButton
+        onClick={onOpen}
+        variant={"ghost"}
+        aria-label={"Edit label"}
+        icon={<EditIcon />}
+      />
       <VStack>
         <Modal isOpen={isOpen} onClose={handleClose}>
           <ModalOverlay />
@@ -79,7 +81,7 @@ const CreateLabel = ({ onCreateLabel }: Props) => {
                     onChange={formik.handleChange}
                     value={formik.values.name}
                     onBlur={formik.handleBlur}
-                    placeholder="Enter a label name"
+                    placeholder={currentLabel.name}
                   />
                   <FormErrorMessage>{formik.errors.name}</FormErrorMessage>
                 </FormControl>
@@ -109,7 +111,7 @@ const CreateLabel = ({ onCreateLabel }: Props) => {
 
               <ModalFooter>
                 <Button type="submit" colorScheme="purple" mr={3}>
-                  Create label
+                  Edit label
                 </Button>
                 <Button onClick={handleClose}>Cancel</Button>
               </ModalFooter>
@@ -117,8 +119,8 @@ const CreateLabel = ({ onCreateLabel }: Props) => {
           </ModalContent>
         </Modal>
       </VStack>
-    </>
+    </Container>
   );
 };
 
-export default CreateLabel;
+export default EditLabel;
