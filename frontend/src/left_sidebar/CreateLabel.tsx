@@ -48,9 +48,8 @@ const CreateLabel = ({ setName, setColor }: Props) => {
     onSubmit: (data, actions): void => {
       setName(data.name);
       setColor(data.color);
-      console.log(data);
-      alert(JSON.stringify(data, null, 2));
       actions.resetForm();
+      alert(JSON.stringify(data, null, 2));
       actions.setSubmitting(false);
     },
   });
@@ -88,7 +87,7 @@ const CreateLabel = ({ setName, setColor }: Props) => {
                     placeholder="Select a color"
                   >
                     {validColors.map((color) => (
-                      <option key={color[1]} value={color[1]}>
+                      <option key={color[0]} value={color[0]}>
                         {color[1]}
                       </option>
                     ))}
@@ -97,7 +96,12 @@ const CreateLabel = ({ setName, setColor }: Props) => {
               </ModalBody>
 
               <ModalFooter>
-                <Button type="submit" colorScheme="purple" mr={3}>
+                <Button
+                  type="submit"
+                  onClick={onClose}
+                  colorScheme="purple"
+                  mr={3}
+                >
                   Create label
                 </Button>
                 <Button onClick={onClose}>Cancel</Button>
