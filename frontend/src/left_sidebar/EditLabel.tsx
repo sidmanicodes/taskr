@@ -44,7 +44,7 @@ const EditLabel = ({ onEditLabel, currentLabel }: Props) => {
       color: Yup.string().required("Please choose a label color"),
     }),
     onSubmit: (data, actions): void => {
-      onEditLabel(data.name, data.color, currentLabel._id);
+      onEditLabel(data.name, data.color, currentLabel?._id || "0");
       console.log(data);
       actions.resetForm();
       actions.setSubmitting(false);
@@ -59,7 +59,7 @@ const EditLabel = ({ onEditLabel, currentLabel }: Props) => {
     onClose();
   };
   return (
-    <Container>
+    <>
       <IconButton
         onClick={onOpen}
         variant={"ghost"}
@@ -119,7 +119,7 @@ const EditLabel = ({ onEditLabel, currentLabel }: Props) => {
           </ModalContent>
         </Modal>
       </VStack>
-    </Container>
+    </>
   );
 };
 

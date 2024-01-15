@@ -12,7 +12,7 @@ const Display = () => {
   const createLabel = (name: string, color: string) => {
     // Update UI
     const originalLabels = [...labels];
-    const newLabel = { name: name, color: color, _id: "0" };
+    const newLabel = { name: name, color: color };
     setLabels([...labels, newLabel]);
 
     // Update server
@@ -22,6 +22,7 @@ const Display = () => {
       .catch((err) => {
         setError(err.message);
         setLabels(originalLabels);
+        console.log("This is where things are going wrong");
       });
   };
 
