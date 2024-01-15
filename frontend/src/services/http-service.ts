@@ -31,7 +31,7 @@ class HttpService {
   }
 
   // Delete item
-  delete(_id: number) {
+  delete(_id: string) {
     return apiClient.delete(this.endpoint + "/" + _id);
   }
 }

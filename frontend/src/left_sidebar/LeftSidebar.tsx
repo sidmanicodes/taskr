@@ -50,9 +50,25 @@ const Display = () => {
       });
   };
 
+  const deleteLabel = (_id: string) => {
+    // Update UI
+    const originalLabels = [...labels];
+    setLabels(labels.filter((label) => label._id !== _id));
+
+    // Update server
+    labelService.delete(_id).catch((err) => {
+      setError(err.message);
+      setLabels(originalLabels);
+    });
+  };
+
   return (
     <VStack>
-      <LabelList onEditLabel={editLabel} labels={labels} />
+      <LabelList
+        onEditLabel={editLabel}
+        onDeleteLabel={deleteLabel}
+        labels={labels}
+      />
       <CreateLabel onCreateLabel={createLabel} />
       <Text>{error}</Text>
     </VStack>

@@ -14,7 +14,7 @@ function App() {
            "aside main"`,
         }}
         templateRows={{
-          lg: "150 1fr",
+          lg: "100px 1fr 10px",
         }}
         templateColumns={{
           base: "1fr",
@@ -22,14 +22,17 @@ function App() {
         }}
       >
         <Show above="lg">
-          <GridItem area="topl" paddingX={4} paddingY={5}>
+          <GridItem area="topl" bg="blue" paddingX={4} paddingY={5}>
             <SidebarHeader />
           </GridItem>
-          <GridItem area="aside" paddingX={3}>
+          <GridItem area="topm" bg="green" />
+          <GridItem area="aside" bg="grey" paddingX={13}>
             <LeftSidebar />
           </GridItem>
         </Show>
-        <GridItem area="main">Main</GridItem>
+        <GridItem bg="red" area="main">
+          Main
+        </GridItem>
       </Grid>
     </div>
   );
