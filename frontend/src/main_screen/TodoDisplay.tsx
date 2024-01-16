@@ -1,10 +1,13 @@
 import useTodos from "../hooks/useTodos";
 import {
+  Box,
   Card,
   CardBody,
   CardHeader,
   Heading,
   Icon,
+  Stack,
+  StackDivider,
   Text,
   VStack,
 } from "@chakra-ui/react";
@@ -80,14 +83,20 @@ const TodoDisplay = ({ labels }: Props) => {
             </Heading>
           </CardHeader>
           <CardBody>
-            {todos &&
-              todos
-                .filter((todo) => todo.label?._id === label?._id)
-                .map((todo) => (
-                  <Heading key={todo._id} size={"xs"}>
-                    {todo.task}
-                  </Heading>
-                ))}
+            <Stack divider={<StackDivider />} spacing={3}>
+              {todos &&
+                todos
+                  .filter((todo) => todo.label?._id === label?._id)
+                  .map((todo) => (
+                    <Box key={todo._id}>
+                      <TodoItem
+                        todo={todo}
+                        onEdit={editTodo}
+                        onDelete={deleteTodo}
+                      />
+                    </Box>
+                  ))}
+            </Stack>
           </CardBody>
         </Card>
       ))}
