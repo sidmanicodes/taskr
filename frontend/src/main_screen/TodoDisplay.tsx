@@ -75,7 +75,7 @@ const TodoDisplay = ({ labels }: Props) => {
   return (
     <VStack align={"left"}>
       {labels.map((label) => (
-        <Card key={label._id} variant={"transparant"}>
+        <Card key={label._id} variant={"elevated"}>
           <CardHeader>
             <Heading size={"s"}>
               <Icon as={IoMdPricetag} mr={3} color={label.color} />
@@ -86,15 +86,19 @@ const TodoDisplay = ({ labels }: Props) => {
             <Stack divider={<StackDivider />} spacing={3}>
               {todos &&
                 todos
-                  .filter((todo) => todo.label?._id === label?._id)
+                  .filter(
+                    (todo) =>
+                      todo?.label !== null && todo.label?._id === label?._id
+                  )
                   .map((todo) => (
-                    <Box key={todo._id}>
-                      <TodoItem
-                        todo={todo}
-                        onEdit={editTodo}
-                        onDelete={deleteTodo}
-                      />
-                    </Box>
+                    // <Box >
+                    <TodoItem
+                      key={todo._id}
+                      todo={todo}
+                      onEdit={editTodo}
+                      onDelete={deleteTodo}
+                    />
+                    // </Box>
                   ))}
             </Stack>
           </CardBody>

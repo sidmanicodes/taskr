@@ -15,10 +15,10 @@ function App() {
           base: `"main" "main"`,
           lg: `"topl topm"
           "aside main"
-           "aside main"`,
+           "aside mainf"`,
         }}
         templateRows={{
-          lg: "100px 1fr 10px",
+          lg: "100px 1fr 50px",
         }}
         templateColumns={{
           base: "1fr",
@@ -27,10 +27,13 @@ function App() {
         gap={2}
       >
         <Show above="lg">
+          {/* Sidebar header */}
           <GridItem area="topl" bg="blue" paddingX={4} paddingY={5}>
             <SidebarHeader />
           </GridItem>
+          {/* Top middle header */}
           <GridItem area="topm" bg="green" />
+          {/* Sidebar */}
           <GridItem area="aside" bg="grey" paddingX={13}>
             <LeftSidebar
               labels={labels}
@@ -40,9 +43,12 @@ function App() {
             />
           </GridItem>
         </Show>
+        {/* Main screen */}
         <GridItem bg="red" area="main">
           <TodoDisplay labels={labels} />
         </GridItem>
+        {/* Main screen footer */}
+        <GridItem bg="orange" area="mainf"></GridItem>
       </Grid>
     </div>
   );
