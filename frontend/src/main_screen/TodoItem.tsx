@@ -1,6 +1,15 @@
 import React from "react";
 import { Todo } from "../services/todo-service";
-import { Box, Checkbox, HStack, Heading, useToast } from "@chakra-ui/react";
+import {
+  Box,
+  Checkbox,
+  HStack,
+  Heading,
+  Stack,
+  StackDivider,
+  Text,
+  useToast,
+} from "@chakra-ui/react";
 
 interface Props {
   todo: Todo;
@@ -27,7 +36,12 @@ const TodoItem = ({ todo, onEdit, onDelete }: Props) => {
             }, 800);
           }}
         />
-        <Heading size={"xs"}>{todo.task}</Heading>
+        <Heading mt={1.5} size={"xs"}>
+          {todo.task}
+        </Heading>
+        <Text mb={2} pt={2} fontSize={"sm"} as={"i"}>
+          {todo.description}
+        </Text>
       </HStack>
     </Box>
   );
