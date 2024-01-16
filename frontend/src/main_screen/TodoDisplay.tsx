@@ -1,5 +1,13 @@
 import useTodos from "../hooks/useTodos";
-import { Card, CardHeader, Icon, Text, VStack } from "@chakra-ui/react";
+import {
+  Card,
+  CardBody,
+  CardHeader,
+  Heading,
+  Icon,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
 import todoService, { Todo } from "../services/todo-service";
 import CreateLabel from "../left_sidebar/CreateLabel";
 import TodoItem from "./TodoItem";
@@ -64,11 +72,23 @@ const TodoDisplay = ({ labels }: Props) => {
   return (
     <VStack align={"left"}>
       {labels.map((label) => (
-        <Card variant={"transparant"}>
+        <Card key={label._id} variant={"transparant"}>
           <CardHeader>
-            <Icon as={IoMdPricetag} />
-            {label.name}
+            <Heading size={"s"}>
+              <Icon as={IoMdPricetag} mr={3} color={label.color} />
+              {label.name}
+            </Heading>
           </CardHeader>
+          <CardBody>
+            {todos &&
+              todos
+                .filter((todo) => todo.label?._id === label?._id)
+                .map((todo) => (
+                  <Heading key={todo._id} size={"xs"}>
+                    {todo.task}
+                  </Heading>
+                ))}
+          </CardBody>
         </Card>
       ))}
     </VStack>
