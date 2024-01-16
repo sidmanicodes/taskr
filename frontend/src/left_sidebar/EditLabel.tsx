@@ -24,7 +24,7 @@ import * as Yup from "yup";
 import validColors from "../services/valid-colors";
 
 interface Props {
-  onEditLabel: (name: string, color: string, _id: string) => void;
+  onEditLabel: (newLabel: Label) => void;
   currentLabel: Label;
 }
 
@@ -44,7 +44,11 @@ const EditLabel = ({ onEditLabel, currentLabel }: Props) => {
       color: Yup.string().required("Please choose a label color"),
     }),
     onSubmit: (data, actions): void => {
-      onEditLabel(data.name, data.color, currentLabel?._id || "0");
+      onEditLabel({
+        name: data.name,
+        color: data.color,
+        _id: currentLabel?._id || "0",
+      });
       console.log(data);
       actions.resetForm();
       actions.setSubmitting(false);

@@ -7,7 +7,7 @@ export interface Todo {
   description: string;
   completed: boolean;
   dueDate: Date;
-  _id: string;
+  _id?: string;
 }
 
 export default create("/todos");

@@ -2,6 +2,7 @@ import {
   FormControl,
   FormLabel,
   FormErrorMessage,
+  FormHelperText,
   VStack,
   Input,
   Select,
@@ -21,9 +22,10 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { PlusSquareIcon } from "@chakra-ui/icons";
 import validColors from "../services/valid-colors";
+import { Label } from "../services/label-service";
 
 interface Props {
-  onCreateLabel: (name: string, color: string) => void;
+  onCreateLabel: (newLabel: Label) => void;
 }
 
 const CreateLabel = ({ onCreateLabel }: Props) => {
@@ -42,7 +44,7 @@ const CreateLabel = ({ onCreateLabel }: Props) => {
       color: Yup.string().required("Please choose a label color"),
     }),
     onSubmit: (data, actions): void => {
-      onCreateLabel(data.name, data.color);
+      onCreateLabel({ name: data.name, color: data.color });
       console.log(data);
       actions.resetForm();
       actions.setSubmitting(false);

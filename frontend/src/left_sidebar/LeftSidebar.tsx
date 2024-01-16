@@ -2,17 +2,16 @@ import useLabels from "../hooks/useLabels";
 import LabelList from "./LabelList";
 import { Text, VStack } from "@chakra-ui/react";
 import CreateLabel from "./CreateLabel";
-import labelService from "../services/label-service";
+import labelService, { Label } from "../services/label-service";
 
-const Display = () => {
+const LeftSidebar = () => {
   // const [name, setName] = useState("");
   // const [color, setColor] = useState("");
   const { labels, error, isLoading, setLabels, setError } = useLabels();
 
-  const createLabel = (name: string, color: string) => {
+  const createLabel = (newLabel: Label) => {
     // Update UI
     const originalLabels = [...labels];
-    const newLabel = { name: name, color: color };
     setLabels([...labels, newLabel]);
 
     // Update server
@@ -26,17 +25,17 @@ const Display = () => {
       });
   };
 
-  const editLabel = (name: string, color: string, _id: string) => {
+  const editLabel = (newLabel: Label) => {
     // Update UI
     const originalLabels = [...labels];
-    const newLabel = { name: name, color: color, _id: _id };
+    const updatedLabel = { ...newLabel, _id: newLabel._id || "0" };
     setLabels(
       labels.map((label) => (label._id === newLabel._id ? newLabel : label))
     );
 
     // Update server
     labelService
-      .update(newLabel)
+      .update(updatedLabel)
       .then(({ data: savedLabel }) =>
         setLabels(
           labels.map((label) =>
@@ -75,4 +74,4 @@ const Display = () => {
   );
 };
 
-export default Display;
+export default LeftSidebar;

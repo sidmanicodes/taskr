@@ -2,6 +2,7 @@ import React from "react";
 import LeftSidebar from "./left_sidebar/LeftSidebar";
 import { Grid, GridItem, Show } from "@chakra-ui/react";
 import SidebarHeader from "./left_sidebar/SidebarHeader";
+import TodoDisplay from "./main_screen/TodoDisplay";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           base: "1fr",
           lg: "250px 1fr",
         }}
+        gap={2}
       >
         <Show above="lg">
           <GridItem area="topl" bg="blue" paddingX={4} paddingY={5}>
@@ -31,7 +33,7 @@ function App() {
           </GridItem>
         </Show>
         <GridItem bg="red" area="main">
-          Main
+          <TodoDisplay />
         </GridItem>
       </Grid>
     </div>
