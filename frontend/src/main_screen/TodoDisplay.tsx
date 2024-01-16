@@ -74,36 +74,42 @@ const TodoDisplay = ({ labels }: Props) => {
 
   return (
     <VStack align={"left"}>
-      {labels.map((label) => (
-        <Card key={label._id} variant={"elevated"}>
-          <CardHeader>
-            <Heading size={"s"}>
-              <Icon as={IoMdPricetag} mr={3} color={label.color} />
-              {label.name}
-            </Heading>
-          </CardHeader>
-          <CardBody>
-            <Stack divider={<StackDivider />} spacing={3}>
-              {todos &&
-                todos
-                  .filter(
-                    (todo) =>
-                      todo?.label !== null && todo.label?._id === label?._id
-                  )
-                  .map((todo) => (
-                    // <Box >
-                    <TodoItem
-                      key={todo._id}
-                      todo={todo}
-                      onEdit={editTodo}
-                      onDelete={deleteTodo}
-                    />
-                    // </Box>
-                  ))}
-            </Stack>
-          </CardBody>
-        </Card>
-      ))}
+      {labels.map(
+        (label) =>
+          label?._id && (
+            <Card key={label._id} variant={"elevated"}>
+              <CardHeader>
+                <Heading size={"s"}>
+                  <Icon as={IoMdPricetag} mr={3} color={label.color} />
+                  {label.name}
+                </Heading>
+              </CardHeader>
+              <CardBody>
+                <Stack divider={<StackDivider />} spacing={3}>
+                  {todos &&
+                    todos
+                      .filter(
+                        (todo) =>
+                          todo?.label !== null && todo.label?._id === label?._id
+                      )
+                      .map(
+                        (todo) =>
+                          todo?._id && (
+                            // <Box >
+                            <TodoItem
+                              key={todo?._id}
+                              todo={todo}
+                              onEdit={editTodo}
+                              onDelete={deleteTodo}
+                            />
+                          )
+                        // </Box>
+                      )}
+                </Stack>
+              </CardBody>
+            </Card>
+          )
+      )}
     </VStack>
   );
 };
