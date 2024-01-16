@@ -1,6 +1,7 @@
 import React from "react";
 import { Todo } from "../services/todo-service";
 import {
+  Badge,
   Box,
   Checkbox,
   HStack,
@@ -8,8 +9,10 @@ import {
   Stack,
   StackDivider,
   Text,
+  VStack,
   useToast,
 } from "@chakra-ui/react";
+import { CalendarIcon } from "@chakra-ui/icons";
 
 interface Props {
   todo: Todo;
@@ -19,12 +22,14 @@ interface Props {
 
 const TodoItem = ({ todo, onEdit, onDelete }: Props) => {
   const completedTaskToast = useToast();
+  const dueDate = new Date(todo.dueDate);
   return (
-    <Box>
+    <Stack direction={"column"}>
       <HStack spacing={4}>
         <Checkbox
           colorScheme="purple"
           onChange={() => {
+            onEdit({ ...todo, completed: !todo.completed });
             setTimeout(() => {
               onDelete(todo._id || "0");
               completedTaskToast({
@@ -39,11 +44,18 @@ const TodoItem = ({ todo, onEdit, onDelete }: Props) => {
         <Heading mt={1.5} size={"xs"}>
           {todo.task}
         </Heading>
-        <Text mb={2} pt={2} fontSize={"sm"} as={"i"}>
+        <Text mb={2.5} pt={2} fontSize={"sm"} as={"i"}>
           {todo.description}
         </Text>
       </HStack>
-    </Box>
+      <HStack spacing={4}>
+        <Badge ml={8} colorScheme="blue">
+          <CalendarIcon mr={2} />
+          {`${dueDate.getMonth()}/${dueDate.getDate()}/${dueDate.getFullYear()}`}
+        </Badge>
+        {todo.completed && <Badge colorScheme="green">Completed</Badge>}
+      </HStack>
+    </Stack>
   );
 };
 
