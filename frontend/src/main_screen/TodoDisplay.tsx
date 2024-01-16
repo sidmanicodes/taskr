@@ -5,10 +5,14 @@ import CreateLabel from "../left_sidebar/CreateLabel";
 import TodoItem from "./TodoItem";
 import useLabels from "../hooks/useLabels";
 import { IoMdPricetag } from "react-icons/io";
+import { Label } from "../services/label-service";
 
-const TodoDisplay = () => {
+interface Props {
+  labels: Label[];
+}
+
+const TodoDisplay = ({ labels }: Props) => {
   const { todos, error, isLoading, setTodos, setError } = useTodos();
-  const { labels } = useLabels();
 
   const createTodo = (newTodo: Todo) => {
     // Update UI

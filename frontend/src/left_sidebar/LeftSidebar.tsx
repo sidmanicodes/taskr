@@ -4,10 +4,17 @@ import { Text, VStack } from "@chakra-ui/react";
 import CreateLabel from "./CreateLabel";
 import labelService, { Label } from "../services/label-service";
 
-const LeftSidebar = () => {
+interface Props {
+  labels: Label[];
+  error: string;
+  setLabels: (labels: Label[]) => void;
+  setError: (err: string) => void;
+}
+
+const LeftSidebar = ({ labels, error, setLabels, setError }: Props) => {
   // const [name, setName] = useState("");
   // const [color, setColor] = useState("");
-  const { labels, error, isLoading, setLabels, setError } = useLabels();
+  // const { labels, error, isLoading, setLabels, setError } = useLabels();
 
   const createLabel = (newLabel: Label) => {
     // Update UI

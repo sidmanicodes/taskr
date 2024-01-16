@@ -3,8 +3,11 @@ import LeftSidebar from "./left_sidebar/LeftSidebar";
 import { Grid, GridItem, Show } from "@chakra-ui/react";
 import SidebarHeader from "./left_sidebar/SidebarHeader";
 import TodoDisplay from "./main_screen/TodoDisplay";
+import useLabels from "./hooks/useLabels";
 
 function App() {
+  const { labels, error, isLoading, setLabels, setError } = useLabels();
+
   return (
     <div>
       <Grid
@@ -29,11 +32,16 @@ function App() {
           </GridItem>
           <GridItem area="topm" bg="green" />
           <GridItem area="aside" bg="grey" paddingX={13}>
-            <LeftSidebar />
+            <LeftSidebar
+              labels={labels}
+              error={error}
+              setLabels={setLabels}
+              setError={setError}
+            />
           </GridItem>
         </Show>
         <GridItem bg="red" area="main">
-          <TodoDisplay />
+          <TodoDisplay labels={labels} />
         </GridItem>
       </Grid>
     </div>
