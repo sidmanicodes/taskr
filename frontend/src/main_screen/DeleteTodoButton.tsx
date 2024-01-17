@@ -1,4 +1,3 @@
-import { Label } from "../services/label-service";
 import {
   Button,
   IconButton,
@@ -13,16 +12,17 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { DeleteIcon } from "@chakra-ui/icons";
+import { Todo } from "../services/todo-service";
 
 interface Props {
-  onDeleteLabel: (_id: string) => void;
-  currentLabel: Label;
+  deleteTodo: (_id: string) => void;
+  curTodo: Todo;
 }
 
-const DeleteLabel = ({ onDeleteLabel, currentLabel }: Props) => {
+const DeleteTodoButton = ({ deleteTodo, curTodo }: Props) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const handleDelete = () => {
-    onDeleteLabel(currentLabel._id || "0");
+    deleteTodo(curTodo._id || "0");
     onClose;
   };
   return (
@@ -39,7 +39,7 @@ const DeleteLabel = ({ onDeleteLabel, currentLabel }: Props) => {
           <ModalOverlay />
           <ModalContent>
             <ModalHeader>
-              Are you sure you want to delete {currentLabel.name}?
+              Are you sure you want to delete {curTodo.task}?
             </ModalHeader>
             <ModalCloseButton />
             <ModalBody>
@@ -47,7 +47,12 @@ const DeleteLabel = ({ onDeleteLabel, currentLabel }: Props) => {
             </ModalBody>
 
             <ModalFooter>
-              <Button onClick={handleDelete} colorScheme="red" mr={3}>
+              <Button
+                onClick={handleDelete}
+                colorScheme="purple"
+                variant={"outline"}
+                mr={3}
+              >
                 Delete
               </Button>
               <Button onClick={onClose}>Cancel</Button>
@@ -59,4 +64,4 @@ const DeleteLabel = ({ onDeleteLabel, currentLabel }: Props) => {
   );
 };
 
-export default DeleteLabel;
+export default DeleteTodoButton;

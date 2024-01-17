@@ -15,7 +15,6 @@ import {
   Button,
 } from "@chakra-ui/react";
 import { FormikProps } from "formik";
-import React from "react";
 import { Label } from "../services/label-service";
 
 interface Props {

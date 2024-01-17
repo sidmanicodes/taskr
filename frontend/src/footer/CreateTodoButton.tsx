@@ -4,7 +4,6 @@ import { PlusSquareIcon } from "@chakra-ui/icons";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { Label } from "../services/label-service";
-import CreateTodoCard from "./CreateTodoCard";
 import TodoForm from "../components/TodoForm";
 
 interface Props {

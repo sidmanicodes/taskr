@@ -15,6 +15,7 @@ import {
 import { CalendarIcon } from "@chakra-ui/icons";
 import EditTodoButton from "./EditTodoButton";
 import { Label } from "../services/label-service";
+import DeleteTodoButton from "./DeleteTodoButton";
 
 interface Props {
   labels: Label[];
@@ -61,8 +62,9 @@ const TodoItem = ({ todo, onEdit, onDelete, labels }: Props) => {
         </Badge>
         {todo.completed && <Badge colorScheme="green">Completed</Badge>}
       </HStack>
-      <HStack spacing={4} ml={4}>
+      <HStack ml={4}>
         <EditTodoButton curTodo={todo} editTodo={onEdit} labels={labels} />
+        <DeleteTodoButton curTodo={todo} deleteTodo={onDelete} />
       </HStack>
     </Stack>
   );
