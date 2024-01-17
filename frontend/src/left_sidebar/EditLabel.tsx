@@ -1,7 +1,6 @@
-import { EditIcon, PlusSquareIcon } from "@chakra-ui/icons";
+import { EditIcon } from "@chakra-ui/icons";
 import {
   Button,
-  Container,
   FormControl,
   FormErrorMessage,
   FormLabel,

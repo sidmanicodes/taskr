@@ -1,15 +1,11 @@
-import React from "react";
 import { Todo } from "../services/todo-service";
 import {
   Badge,
-  Box,
   Checkbox,
   HStack,
   Heading,
   Stack,
-  StackDivider,
   Text,
-  VStack,
   useToast,
 } from "@chakra-ui/react";
 import { CalendarIcon } from "@chakra-ui/icons";

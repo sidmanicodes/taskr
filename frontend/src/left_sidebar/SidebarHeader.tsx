@@ -1,5 +1,4 @@
-import React from "react";
-import { Box, Container, Text } from "@chakra-ui/react";
+import { Container, Text } from "@chakra-ui/react";
 import { Icon } from "@chakra-ui/react";
 import { MdAddTask } from "react-icons/md";
 

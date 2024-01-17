@@ -1,4 +1,3 @@
-import React from "react";
 import LeftSidebar from "./left_sidebar/LeftSidebar";
 import { Grid, GridItem, Show } from "@chakra-ui/react";
 import SidebarHeader from "./left_sidebar/SidebarHeader";
@@ -18,8 +17,8 @@ function App() {
   } = useLabels();
   const {
     todos,
-    error: todoError,
-    isLoading: isTodoLoading,
+    // error: todoError,
+    // isLoading: isTodoLoading,
     setTodos,
     setError: setTodoError,
   } = useTodos();

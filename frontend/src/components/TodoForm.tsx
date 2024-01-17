@@ -13,7 +13,6 @@ import {
   Select,
   ModalFooter,
   Button,
-  Spacer,
 } from "@chakra-ui/react";
 import { FormikProps } from "formik";
 import { Label } from "../services/label-service";

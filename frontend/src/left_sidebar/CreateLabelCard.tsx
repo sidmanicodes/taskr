@@ -14,7 +14,6 @@ import {
   ModalFooter,
   Button,
 } from "@chakra-ui/react";
-import React from "react";
 import validColors from "../services/valid-colors";
 import { FormikProps } from "formik";
 

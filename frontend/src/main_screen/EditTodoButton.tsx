@@ -1,4 +1,4 @@
-import { EditIcon, PlusSquareIcon } from "@chakra-ui/icons";
+import { EditIcon } from "@chakra-ui/icons";
 import { Button, useDisclosure } from "@chakra-ui/react";
 import { Formik } from "formik";
 import { Todo } from "../services/todo-service";

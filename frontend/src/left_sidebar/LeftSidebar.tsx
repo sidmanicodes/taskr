@@ -1,7 +1,5 @@
-import useLabels from "../hooks/useLabels";
 import LabelList from "./LabelList";
 import { Text, VStack } from "@chakra-ui/react";
-import CreateLabelButton from "./CreateLabelButton";
 import labelService, { Label } from "../services/label-service";
 
 interface Props {
