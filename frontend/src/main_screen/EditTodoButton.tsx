@@ -1,12 +1,11 @@
 import { EditIcon, PlusSquareIcon } from "@chakra-ui/icons";
 import { Button, useDisclosure } from "@chakra-ui/react";
 import { Formik } from "formik";
-import CreateTodoCard from "../footer/CreateTodoCard";
 import { Todo } from "../services/todo-service";
 // import dateStringRegex from "../services/date-string-regex";
 import * as Yup from "yup";
 import { Label } from "../services/label-service";
-import EditTodoCard from "./EditTodoCard";
+import TodoForm from "../components/TodoForm";
 
 interface Props {
   curTodo: Todo;
@@ -71,7 +70,7 @@ const EditTodoButton = ({ curTodo, editTodo, labels }: Props) => {
         }}
       >
         {(formik) => (
-          <EditTodoCard
+          <TodoForm
             formik={formik}
             isOpen={isOpen}
             onClose={onClose}

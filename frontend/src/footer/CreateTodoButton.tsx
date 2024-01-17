@@ -5,6 +5,7 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import { Label } from "../services/label-service";
 import CreateTodoCard from "./CreateTodoCard";
+import TodoForm from "../components/TodoForm";
 
 interface Props {
   labels: Label[];
@@ -80,7 +81,7 @@ const CreateTodoButton = ({ todos, labels, setTodos, setError }: Props) => {
         }}
       >
         {(formik) => (
-          <CreateTodoCard
+          <TodoForm
             formik={formik}
             isOpen={isOpen}
             onClose={onClose}
