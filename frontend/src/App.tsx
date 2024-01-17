@@ -54,6 +54,7 @@ function App() {
             <LeftSidebar
               labels={labels}
               error={labelError}
+              isLoading={isLabelLoading}
               setLabels={setLabels}
               setError={setLabelError}
             />

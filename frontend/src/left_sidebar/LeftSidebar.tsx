@@ -7,15 +7,18 @@ import labelService, { Label } from "../services/label-service";
 interface Props {
   labels: Label[];
   error: string;
+  isLoading: boolean;
   setLabels: (labels: Label[]) => void;
   setError: (err: string) => void;
 }
 
-const LeftSidebar = ({ labels, error, setLabels, setError }: Props) => {
-  // const [name, setName] = useState("");
-  // const [color, setColor] = useState("");
-  // const { labels, error, isLoading, setLabels, setError } = useLabels();
-
+const LeftSidebar = ({
+  labels,
+  error,
+  isLoading,
+  setLabels,
+  setError,
+}: Props) => {
   const createLabel = (newLabel: Label) => {
     // Update UI
     const originalLabels = [...labels];
@@ -71,6 +74,7 @@ const LeftSidebar = ({ labels, error, setLabels, setError }: Props) => {
   return (
     <VStack>
       <LabelList
+        isLoading={isLoading}
         onCreateLabel={createLabel}
         onEditLabel={editLabel}
         onDeleteLabel={deleteLabel}

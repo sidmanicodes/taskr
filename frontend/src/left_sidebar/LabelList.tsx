@@ -1,32 +1,24 @@
 import { Label } from "../services/label-service";
 import {
-  Text,
   Container,
-  Flex,
   Spacer,
   Button,
-  HStack,
   Box,
-  VStack,
-  StackDivider,
-  Grid,
-  GridItem,
-  Stack,
   SimpleGrid,
   Card,
   useColorMode,
 } from "@chakra-ui/react";
-import { DeleteIcon } from "@chakra-ui/icons";
 import { Icon } from "@chakra-ui/react";
-import { BiCategoryAlt } from "react-icons/bi";
 import { IoMdPricetags } from "react-icons/io";
 import EditLabel from "./EditLabel";
 import DeleteLabel from "./DeleteLabel";
 import React from "react";
 import CreateLabelButton from "./CreateLabelButton";
+import LabelSkeleton from "../components/LabelSkeleton";
 
 interface Props {
   labels: Label[];
+  isLoading: boolean;
   onCreateLabel: (newLabel: Label) => void;
   onEditLabel: (newLabel: Label) => void;
   onDeleteLabel: (_id: string) => void;
@@ -34,6 +26,7 @@ interface Props {
 
 const LabelList = ({
   labels,
+  isLoading,
   onCreateLabel,
   onEditLabel,
   onDeleteLabel,
@@ -47,6 +40,10 @@ const LabelList = ({
           variant={colorMode === "dark" ? "elevated" : "filled"}
           width={"100%"}
         >
+          {isLoading &&
+            labels.map((label) => (
+              <LabelSkeleton key={label._id && label._id} />
+            ))}
           <SimpleGrid columns={3}>
             {labels.map(
               (label) =>
