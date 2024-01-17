@@ -60,7 +60,7 @@ const CreateTodoButton = ({ todos, labels, setTodos, setError }: Props) => {
           ),
           dueDate: Yup.string()
             .required("Please enter a due date")
-            .matches(dateStringRegex, "Date much be in the form mm/dd/yyy"),
+            .matches(dateStringRegex, "Date much be in the form mm/dd/yyyy"),
           label: Yup.string()
             .oneOf(labelIds, "Please enter an existing label")
             .required("Please enter a label"),
