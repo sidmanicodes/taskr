@@ -22,7 +22,7 @@ const CreateLabelButton = ({ onCreateLabel }: Props) => {
           variant={"outline"}
           colorScheme="purple"
         >
-          <PlusSquareIcon mr={1} />
+          <PlusSquareIcon mr={2} />
           Create new label
         </Button>
       </Container>

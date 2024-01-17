@@ -36,7 +36,7 @@ const CreateTodoButton = ({ todos, labels, setTodos, setError }: Props) => {
   return (
     <>
       <Button onClick={onOpen} variant={"ghost"} size={"lg"}>
-        <PlusSquareIcon mr={1} />
+        <PlusSquareIcon mr={2} />
         Create new todo
       </Button>
       <Formik

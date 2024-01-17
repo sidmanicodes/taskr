@@ -7,7 +7,7 @@ const SidebarHeader = () => {
   return (
     <Container>
       <Text fontSize={"3xl"} padding={3}>
-        <Icon as={MdAddTask} color="green" />
+        <Icon as={MdAddTask} color="#9F7AEA" />
         TaskR
       </Text>
     </Container>

@@ -86,7 +86,7 @@ function App() {
           display={"flex"}
           justifyContent={"flex-end"}
           alignItems={"center"}
-          paddingX={3}
+          paddingX={5}
         >
           <CreateTodoButton
             labels={labels}

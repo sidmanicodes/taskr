@@ -13,6 +13,7 @@ import {
   Select,
   ModalFooter,
   Button,
+  Spacer,
 } from "@chakra-ui/react";
 import { FormikProps } from "formik";
 import { Label } from "../services/label-service";
@@ -76,11 +77,13 @@ const TodoForm = ({ formik, isOpen, onClose, labels }: Props) => {
                   name="label"
                   placeholder="Select a label"
                 >
-                  {labels.map((label) => (
-                    <option value={label._id} key={label._id}>
-                      {label.name}
-                    </option>
-                  ))}
+                  {labels
+                    .filter((label) => label._id !== undefined)
+                    .map((label) => (
+                      <option value={label._id} key={label._id}>
+                        {label.name}
+                      </option>
+                    ))}
                 </Select>
                 <FormErrorMessage>{formik?.errors?.label}</FormErrorMessage>
               </FormControl>

@@ -25,9 +25,13 @@ interface Props {
 }
 
 const CreateLabelCard = ({ formik, isOpen, onClose }: Props) => {
+  const handleClose = () => {
+    formik.resetForm();
+    onClose();
+  };
   return (
     <VStack>
-      <Modal isOpen={isOpen} onClose={formik.handleSubmit}>
+      <Modal isOpen={isOpen} onClose={handleClose}>
         <ModalOverlay />
         <ModalContent>
           <form onSubmit={formik.handleSubmit}>
@@ -73,14 +77,7 @@ const CreateLabelCard = ({ formik, isOpen, onClose }: Props) => {
               <Button type="submit" colorScheme="purple" mr={3}>
                 Create label
               </Button>
-              <Button
-                onClick={() => {
-                  formik.resetForm();
-                  onClose();
-                }}
-              >
-                Cancel
-              </Button>
+              <Button onClick={handleClose}>Cancel</Button>
             </ModalFooter>
           </form>
         </ModalContent>
