@@ -73,6 +73,7 @@ const TodoDisplay = ({ labels, todos, setTodos, setError }: Props) => {
                         (todo) =>
                           todo?._id && (
                             <TodoItem
+                              labels={labels}
                               key={todo?._id}
                               todo={todo}
                               onEdit={editTodo}

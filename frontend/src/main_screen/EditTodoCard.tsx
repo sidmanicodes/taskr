@@ -30,7 +30,7 @@ interface Props {
   labels: Label[];
 }
 
-const CreateTodoCard = ({ formik, isOpen, onClose, labels }: Props) => {
+const EditTodoCard = ({ formik, isOpen, onClose, labels }: Props) => {
   const handleClose = () => {
     formik.resetForm();
     onClose();
@@ -100,9 +100,16 @@ const CreateTodoCard = ({ formik, isOpen, onClose, labels }: Props) => {
 
             <ModalFooter>
               <Button type="submit" colorScheme="purple" mr={3}>
-                Create todo
+                Edit
               </Button>
-              <Button onClick={handleClose}>Cancel</Button>
+              <Button
+                onClick={() => {
+                  formik.resetForm();
+                  onClose();
+                }}
+              >
+                Cancel
+              </Button>
             </ModalFooter>
           </form>
         </ModalContent>
@@ -111,4 +118,4 @@ const CreateTodoCard = ({ formik, isOpen, onClose, labels }: Props) => {
   );
 };
 
-export default CreateTodoCard;
+export default EditTodoCard;

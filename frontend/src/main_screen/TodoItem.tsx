@@ -13,14 +13,17 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { CalendarIcon } from "@chakra-ui/icons";
+import EditTodoButton from "./EditTodoButton";
+import { Label } from "../services/label-service";
 
 interface Props {
+  labels: Label[];
   todo: Todo;
   onEdit: (todo: Todo) => void;
   onDelete: (_id: string) => void;
 }
 
-const TodoItem = ({ todo, onEdit, onDelete }: Props) => {
+const TodoItem = ({ todo, onEdit, onDelete, labels }: Props) => {
   const completedTaskToast = useToast();
   const dueDate = new Date(todo.dueDate);
   return (
@@ -55,6 +58,9 @@ const TodoItem = ({ todo, onEdit, onDelete }: Props) => {
             `${dueDate.getMonth()}/${dueDate.getDate()}/${dueDate.getFullYear()}`}
         </Badge>
         {todo.completed && <Badge colorScheme="green">Completed</Badge>}
+      </HStack>
+      <HStack spacing={4} ml={4}>
+        <EditTodoButton curTodo={todo} editTodo={onEdit} labels={labels} />
       </HStack>
     </Stack>
   );
