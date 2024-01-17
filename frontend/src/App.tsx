@@ -34,7 +34,7 @@ function App() {
         }}
         templateRows={{
           base: "100px 1fr 50px",
-          lg: "100px 1fr 80px",
+          lg: "100px 1fr 150px",
         }}
         templateColumns={{
           base: "1fr",
@@ -70,7 +70,14 @@ function App() {
           />
         </GridItem>
         {/* Main screen footer */}
-        <GridItem bg="orange" area="mainf">
+        <GridItem
+          bg="orange"
+          area="mainf"
+          display={"flex"}
+          justifyContent={"flex-end"}
+          alignItems={"center"}
+          paddingX={3}
+        >
           <CreateTodoButton
             labels={labels}
             todos={todos}

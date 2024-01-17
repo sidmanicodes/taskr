@@ -35,7 +35,7 @@ const CreateTodoButton = ({ todos, labels, setTodos, setError }: Props) => {
 
   return (
     <>
-      <Button onClick={onOpen} variant={"ghost"}>
+      <Button onClick={onOpen} variant={"ghost"} size={"lg"}>
         <PlusSquareIcon mr={1} />
         Create new todo
       </Button>
