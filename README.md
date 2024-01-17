@@ -1,6 +1,13 @@
 # taskr
 A simple todo app to aid in task managment
 
+## How to use
+* Add labels and assign tasks to them
+  * Labels and tasks are editable and deletable
+* Tasks can be marked as complete
+* NOTE: dates should be entered in the format MM/DD/YYYY NOT MM/DD/YYY
+
+## How to run
 Check it out here! --> http://104.199.117.235/
 
 If, for some reason, the above link doesn't work, clone this repository and then follow these steps:
