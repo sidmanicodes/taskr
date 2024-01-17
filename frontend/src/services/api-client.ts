@@ -1,7 +1,7 @@
 import axios, { CanceledError } from "axios";
 
 export default axios.create({
-  baseURL: "http://localhost:8000/api",
+  baseURL: "https://stormy-lowlands-61043-518bd540753b.herokuapp.com/api",
 });
 
 export { CanceledError };
