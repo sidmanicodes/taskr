@@ -7,6 +7,7 @@ import {
   Stack,
   StackDivider,
   VStack,
+  useColorMode,
 } from "@chakra-ui/react";
 import todoService, { Todo } from "../services/todo-service";
 import TodoItem from "./TodoItem";
@@ -21,6 +22,8 @@ interface Props {
 }
 
 const TodoDisplay = ({ labels, todos, setTodos, setError }: Props) => {
+  const { colorMode } = useColorMode();
+
   const editTodo = (newTodo: Todo) => {
     // Update UI
     const originalTodos = [...todos];
@@ -57,7 +60,10 @@ const TodoDisplay = ({ labels, todos, setTodos, setError }: Props) => {
       {labels.map(
         (label) =>
           label._id && (
-            <Card key={label._id} variant={"elevated"}>
+            <Card
+              key={label._id}
+              variant={colorMode === "dark" ? "elevated" : "filled"}
+            >
               <CardHeader>
                 <Heading size={"s"}>
                   <Icon as={IoMdPricetag} mr={3} color={label.color} />

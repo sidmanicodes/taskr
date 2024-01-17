@@ -1,9 +1,10 @@
-import { Button, useDisclosure } from "@chakra-ui/react";
+import { Button, Container, Icon, useDisclosure, Text } from "@chakra-ui/react";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { PlusSquareIcon } from "@chakra-ui/icons";
 import { Label } from "../services/label-service";
 import CreateLabelCard from "./CreateLabelCard";
+import { BiCategoryAlt } from "react-icons/bi";
 
 interface Props {
   onCreateLabel: (newLabel: Label) => void;
@@ -14,10 +15,17 @@ const CreateLabelButton = ({ onCreateLabel }: Props) => {
 
   return (
     <>
-      <Button onClick={onOpen} variant={"ghost"}>
-        <PlusSquareIcon mr={1} />
-        Create new label
-      </Button>
+      <Container borderRadius="lg">
+        <Button
+          width={"100%"}
+          onClick={onOpen}
+          variant={"outline"}
+          colorScheme="purple"
+        >
+          <PlusSquareIcon mr={1} />
+          Create new label
+        </Button>
+      </Container>
       <Formik
         initialValues={{
           name: "",

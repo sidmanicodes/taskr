@@ -71,11 +71,12 @@ const LeftSidebar = ({ labels, error, setLabels, setError }: Props) => {
   return (
     <VStack>
       <LabelList
+        onCreateLabel={createLabel}
         onEditLabel={editLabel}
         onDeleteLabel={deleteLabel}
         labels={labels}
       />
-      <CreateLabelButton onCreateLabel={createLabel} />
+      {/* <CreateLabelButton onCreateLabel={createLabel} /> */}
       <Text>{error}</Text>
     </VStack>
   );
