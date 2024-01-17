@@ -94,7 +94,7 @@ const TodoForm = ({ formik, isOpen, onClose, labels }: Props) => {
                   size={"sm"}
                   {...formik.getFieldProps("dueDate")}
                   name="dueDate"
-                  placeholder="MM/DD/YYY"
+                  placeholder="MM/DD/YYYY"
                 />
                 <FormErrorMessage>{formik.errors.dueDate}</FormErrorMessage>
               </FormControl>
