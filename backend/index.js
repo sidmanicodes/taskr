@@ -37,3 +37,4 @@ mongoose
 // Mount routes as middleware
 app.use("/api/labels", labelRoutes);
 app.use("/api/todos", todoRoutes);
+require("./prod")(app);
