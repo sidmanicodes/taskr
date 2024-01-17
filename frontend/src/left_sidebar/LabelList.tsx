@@ -31,41 +31,12 @@ interface Props {
 const LabelList = ({ labels, onEditLabel, onDeleteLabel }: Props) => {
   return (
     <>
-      <Container borderRadius="lg" bg="#6d51c0" my={3} p={4}>
+      <Container borderRadius="lg" bg="#6d51a0" my={3} p={4}>
         <Text as="b" fontSize="large">
           <Icon as={BiCategoryAlt} mr={2} />
           Labels
         </Text>
       </Container>
-      {/* <VStack spacing={2} align="center" justify="center" mx={3}>
-        {labels.map(
-          (label) =>
-            label?._id && (
-              <HStack
-                key={label?._id}
-                spacing={2}
-                align="center"
-                justify="center"
-                w="100%"
-              >
-                <Button
-                  variant="transparent"
-                  display="flex"
-                  alignItems="center"
-                >
-                  <Icon as={IoMdPricetags} color={label.color} mr={4} />
-                  <Spacer />
-                  {label.name}
-                </Button>
-                <EditLabel onEditLabel={onEditLabel} currentLabel={label} />
-                <DeleteLabel
-                  onDeleteLabel={onDeleteLabel}
-                  currentLabel={label}
-                />
-              </HStack>
-            )
-        )}
-      </VStack> */}
       <SimpleGrid columns={3}>
         {labels.map(
           (label) =>

@@ -45,11 +45,11 @@ function App() {
       >
         <Show above="lg">
           {/* Sidebar header */}
-          <GridItem area="topl" bg="blue" paddingX={4} paddingY={5}>
+          <GridItem area="topl" paddingX={4} paddingY={5}>
             <SidebarHeader />
           </GridItem>
           {/* Sidebar */}
-          <GridItem area="aside" bg="grey" paddingX={13}>
+          <GridItem area="aside" paddingX={13}>
             <LeftSidebar
               labels={labels}
               error={labelError}
@@ -59,9 +59,9 @@ function App() {
           </GridItem>
         </Show>
         {/* Top middle header */}
-        <GridItem area="mainh" bg="green" />
+        <GridItem area="mainh" />
         {/* Main screen */}
-        <GridItem bg="red" area="main" overflowY={"auto"}>
+        <GridItem area="main" overflowY={"auto"}>
           <TodoDisplay
             labels={labels}
             todos={todos}
@@ -71,7 +71,6 @@ function App() {
         </GridItem>
         {/* Main screen footer */}
         <GridItem
-          bg="orange"
           area="mainf"
           display={"flex"}
           justifyContent={"flex-end"}
