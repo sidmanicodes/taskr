@@ -51,7 +51,8 @@ const TodoItem = ({ todo, onEdit, onDelete }: Props) => {
       <HStack spacing={4}>
         <Badge ml={8} colorScheme="blue">
           <CalendarIcon mr={2} />
-          {`${dueDate.getMonth()}/${dueDate.getDate()}/${dueDate.getFullYear()}`}
+          {todo.dueDate &&
+            `${dueDate.getMonth()}/${dueDate.getDate()}/${dueDate.getFullYear()}`}
         </Badge>
         {todo.completed && <Badge colorScheme="green">Completed</Badge>}
       </HStack>

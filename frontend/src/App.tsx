@@ -4,9 +4,24 @@ import { Grid, GridItem, Show } from "@chakra-ui/react";
 import SidebarHeader from "./left_sidebar/SidebarHeader";
 import TodoDisplay from "./main_screen/TodoDisplay";
 import useLabels from "./hooks/useLabels";
+import useTodos from "./hooks/useTodos";
+import CreateTodoButton from "./footer/CreateTodoButton";
 
 function App() {
-  const { labels, error, isLoading, setLabels, setError } = useLabels();
+  const {
+    labels,
+    error: labelError,
+    isLoading: isLabelLoading,
+    setLabels,
+    setError: setLabelError,
+  } = useLabels();
+  const {
+    todos,
+    error: todoError,
+    isLoading: isTodoLoading,
+    setTodos,
+    setError: setTodoError,
+  } = useTodos();
 
   return (
     <div>
@@ -19,7 +34,7 @@ function App() {
         }}
         templateRows={{
           base: "100px 1fr 50px",
-          lg: "100px 1fr 50px",
+          lg: "100px 1fr 80px",
         }}
         templateColumns={{
           base: "1fr",
@@ -37,9 +52,9 @@ function App() {
           <GridItem area="aside" bg="grey" paddingX={13}>
             <LeftSidebar
               labels={labels}
-              error={error}
+              error={labelError}
               setLabels={setLabels}
-              setError={setError}
+              setError={setLabelError}
             />
           </GridItem>
         </Show>
@@ -47,10 +62,22 @@ function App() {
         <GridItem area="mainh" bg="green" />
         {/* Main screen */}
         <GridItem bg="red" area="main" overflowY={"auto"}>
-          <TodoDisplay labels={labels} />
+          <TodoDisplay
+            labels={labels}
+            todos={todos}
+            setTodos={setTodos}
+            setError={setTodoError}
+          />
         </GridItem>
         {/* Main screen footer */}
-        <GridItem bg="orange" area="mainf"></GridItem>
+        <GridItem bg="orange" area="mainf">
+          <CreateTodoButton
+            labels={labels}
+            todos={todos}
+            setTodos={setTodos}
+            setError={setTodoError}
+          />
+        </GridItem>
       </Grid>
     </div>
   );

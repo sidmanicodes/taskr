@@ -1,7 +1,7 @@
 import useLabels from "../hooks/useLabels";
 import LabelList from "./LabelList";
 import { Text, VStack } from "@chakra-ui/react";
-import CreateLabel from "./CreateLabel";
+import CreateLabelButton from "./CreateLabelButton";
 import labelService, { Label } from "../services/label-service";
 
 interface Props {
@@ -75,7 +75,7 @@ const LeftSidebar = ({ labels, error, setLabels, setError }: Props) => {
         onDeleteLabel={deleteLabel}
         labels={labels}
       />
-      <CreateLabel onCreateLabel={createLabel} />
+      <CreateLabelButton onCreateLabel={createLabel} />
       <Text>{error}</Text>
     </VStack>
   );
