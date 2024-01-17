@@ -6,6 +6,7 @@ import TodoDisplay from "./main_screen/TodoDisplay";
 import useLabels from "./hooks/useLabels";
 import useTodos from "./hooks/useTodos";
 import CreateTodoButton from "./footer/CreateTodoButton";
+import ColorSwitch from "./left_footer/ColorSwitch";
 
 function App() {
   const {
@@ -30,7 +31,7 @@ function App() {
           base: `"mainh" "main" "mainf"`,
           lg: `"topl mainh"
           "aside main"
-           "aside mainf"`,
+           "asidef mainf"`,
         }}
         templateRows={{
           base: "100px 1fr 50px",
@@ -38,7 +39,7 @@ function App() {
         }}
         templateColumns={{
           base: "1fr",
-          lg: "250px 1fr",
+          lg: "300px 1fr",
         }}
         height={"100vh"}
         gap={2}
@@ -56,6 +57,16 @@ function App() {
               setLabels={setLabels}
               setError={setLabelError}
             />
+          </GridItem>
+          {/* Left footer */}
+          <GridItem
+            area="asidef"
+            display={"flex"}
+            alignItems={"center"}
+            paddingX={10}
+            paddingY={10}
+          >
+            <ColorSwitch />
           </GridItem>
         </Show>
         {/* Top middle header */}
