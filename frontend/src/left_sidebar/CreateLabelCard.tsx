@@ -74,7 +74,12 @@ const CreateLabelCard = ({ formik, isOpen, onClose }: Props) => {
             </ModalBody>
 
             <ModalFooter>
-              <Button type="submit" colorScheme="purple" mr={3}>
+              <Button
+                type="submit"
+                colorScheme="purple"
+                mr={3}
+                variant={"outline"}
+              >
                 Create label
               </Button>
               <Button onClick={handleClose}>Cancel</Button>

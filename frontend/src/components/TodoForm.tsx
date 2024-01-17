@@ -102,7 +102,12 @@ const TodoForm = ({ formik, isOpen, onClose, labels }: Props) => {
             </ModalBody>
 
             <ModalFooter>
-              <Button type="submit" colorScheme="purple" mr={3}>
+              <Button
+                type="submit"
+                colorScheme="purple"
+                mr={3}
+                variant={"outline"}
+              >
                 Done
               </Button>
               <Button onClick={handleClose}>Cancel</Button>
